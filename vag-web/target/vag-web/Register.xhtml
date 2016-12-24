@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+<title>VAG !</title>
+
+
+ <!-- Icon -->
+  <link rel="icon" type="image/png" href="images/icon.png"></link>
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'></link>
+
+
+  <!-- Bootstrap -->
+
+<h:outputStylesheet library="css" name="bootstrap.min.css"  />
+  <!-- FontAwesome -->
+
+ 
+ <h:outputStylesheet library="css" name="font-awesome.min.css"  />
+  <!-- youplay -->
+
+
+ <h:outputStylesheet library="css" name="youplay.min.css"  />
+
+<style>
+
+.ui-growl-icon-close {
+    cursor: pointer;
+    position: absolute;
+    left: 335px;
+    top: 100px;
+}
+</style>
+</h:head> 
+<body> 
+  <!-- Main Content -->
+  <section class="content-wrap full youplay-login">
+
+    <!-- Banner -->
+    <div class="youplay-banner banner-top">
+      <div class="image" style="background-image: url(resources/images/banner-bg.jpg)">
+      </div>
+
+      <div class="info">
+        <div>
+          <div class="container align-center">
+            <div class="youplay-form">
+              <h2>Sign up !</h2>
+
+             
+
+              <h:form >
+                <div class="youplay-input">
+                
+                		<h:inputText id="Email" value="#{inscriptionBean.email}"  a:placeholder="Email" />
+					
+                </div>
+                <div class="youplay-input">
+                
+                
+                
+						<h:inputSecret id="password" value="#{inscriptionBean.passwordHash}"  a:placeholder="Password" />
+                </div>
+                
+                
+                
+                 <div class="youplay-input">
+                
+                
+         
+						<h:inputText id="cin" value="#{inscriptionBean.cin}"  a:placeholder="cin" />
+                </div>
+                
+                
+                
+                
+                
+                
+                 <div class="youplay-input">
+                
+                
+                	<h:inputText id="lastname" value="#{inscriptionBean.lastName}"  a:placeholder="Last Name" />
+                </div>
+                
+                  <div class="youplay-input">
+                
+                
+                	<h:inputText id="firstname" value="#{inscriptionBean.firstName}"  a:placeholder="First Name" />
+                </div>
+          
+               <h:commandButton  action="#{inscriptionBean.Inscription2()}" value="Sign Up !" />
+                
+              </h:form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Banner -->
+
+  </section>
+  <!-- /Main Content -->
+</body> 
+</html>

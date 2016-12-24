@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head><title> Paypal with JSF</title></h:head> 
+<body> 
+<form method="post" action ="https://www.sandbox.paypal.com/cgi-bin/webscr">
+<input type="hidden" name="upload" value="1" />
+<input type="hidden" name="return" value="${intiParam['returnurl']}" />
+<input type="hidden" name="cmd" value="_cart" />
+<input type="hidden" name="business" value="${intiParam['business']}" />
+
+
+
+<!-- product -->
+<input type="hidden" name="item_name_1" value="Product 1" />
+<input type="hidden" name="item_number_1" value="p1" />
+<input type="hidden" name="amount_1" value="2" />
+<input type="hidden" name="quantity_1" value="3" />
+<!-- product -->
+<input type="hidden" name="business" value="JsfVendor@gmail.com"/>
+<input type="hidden" name="return" value="http://localhost:18080/shop-web/pages/User/SingleTopic.jsf"/>
+<input type="hidden" name="cancel" value="http://localhost:18080/shop-web/index.jsf"/>
+<a href="https://www.sandbox.paypal.com/cgi-bin/webscr">SEND</a>
+<input type="image" src="https://www.paypal.com/fr_XC/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"/>
+<img src="https://www.paypal.com/fr_XC/i/logo/PayPal_mark_37x23.gif" align="left" style="margin-right:7px;" /><span style="font-size:11px; font-family: Arial, Verdana;">Le réflexe sécurité.</span>
+</form>
+</body> 
+</html>

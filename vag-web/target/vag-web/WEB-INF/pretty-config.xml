@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+	<url-mapping id="display">
+		<pattern value="/display" />
+		<view-id value="/display.jsf" />
+	</url-mapping>
+	<url-mapping id="Article">
+		<pattern value="/Article" />
+		<view-id value="/Article.jsf" />
+	</url-mapping>
+	
+	<!-- Shop -->
+		<url-mapping id="VagStore">
+		<pattern value="/VagStore" />
+		<view-id value="/VagStore.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="Panier">
+		<pattern value="/Panier" />
+		<view-id value="/Panier.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="Compare">
+		<pattern value="/Compare" />
+		<view-id value="/Compar.jsf" />
+	</url-mapping>
+	
+		<url-mapping id="LoginIdentity">
+		<pattern value="/LoginIdentity" />
+		<view-id value="/LoginIdentity.jsf" />
+	</url-mapping>
+	
+	
+		<url-mapping id="RegisterIdentity">
+		<pattern value="/RegisterIdentity" />
+		<view-id value="/Register.jsf" />
+	</url-mapping>
+	<url-mapping id="WishList">
+		<pattern value="/wishList" />
+		<view-id value="/WishsList.jsf" />
+	</url-mapping>
+	
+	
+
+		<!-- Shop -->
+		
+		
+		<!-- Forum -->
+				<url-mapping id="Forum">
+		<pattern value="/AddSubject" />
+		<view-id value="/Forum.jsf" />
+	</url-mapping>
+	
+	
+		<url-mapping id="Topics">
+		<pattern value="/Topics" />
+		<view-id value="/ListOfTopics.jsf" />
+	</url-mapping>
+	
+
+			
+				<!-- Forum -->
+	
+</pretty-config>

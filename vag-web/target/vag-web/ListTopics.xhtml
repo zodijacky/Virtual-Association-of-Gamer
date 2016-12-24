@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui" template="/YouPlayTemplate.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+<ui:define name="menu">
+	<li><a href="http://localhost:18080/vag-web/Panier">Cart<span
+									class="badge pull-right bg-default"><p:outputLabel value="#{displayProductBeans.sizeCart}" /></span></a></li>
+							<li class="divider"></li>
+							
+							
+							<li><a href="http://localhost:18080/vag-web/wishList">WishList<span
+									class="badge pull-right bg-warning"><p:outputLabel value="#{wishListBean.wishTaille}" /></span></a></li>
+							<li class="divider"></li>
+
+</ui:define>
+
+
+	<ui:define name="content">
+
+		<!-- Main Content -->
+		<section class="content-wrap"> <!-- Banner -->
+
+
+
+
+
+
+		<div class="youplay-banner banner-top xsmall">
+			<div class="image" data-top="background-position: 50% 0px;"
+				data-top-bottom="background-position: 50% -200px;">
+
+
+
+
+				<p:graphicImage library="images" name="banner-bg.jpg" height="400"
+					width="1400">
+				</p:graphicImage>
+			</div>
+
+			<div class="info"
+				data-top="opacity: 1; transform: translate3d(0px,0px,0px);"
+				data-top-bottom="opacity: 0; transform: translate3d(0px,150px,0px);"
+				data-anchor-target=".youplay-banner.banner-top">
+				<div>
+					<div class="container">
+						<h2>Forum</h2>
+								 <p:commandLink value="rest" action="#{topicsBean.Test()}"></p:commandLink>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Banner -->
+
+
+
+
+		<div class="container youplay-content">
+
+			<div class="col-md-9">
+			
+			
+				<!-- Breadcrumb -->
+				<div class="mt-10 pull-left">
+					<a href="index.html">Home</a> <span class="fa fa-angle-right"></span>
+					<span>Forums</span>
+					<p:commandLink value="rest" action="#{topicsBean.Test()}"></p:commandLink>
+				</div>
+				<!-- /Breadcrumb -->
+				<!-- Search -->
+				<form action="http://html.nkdev.info/youplay/dark/search.html"
+					class="pull-right">
+					<p>Search by Forum:</p>
+					 <p:commandLink value="rest" action="#{topicsBean.Test()}"></p:commandLink>
+					<div class="youplay-input pull-left">
+						<input type="text" name="search" />
+					</div>
+					<button class="btn pull-right">Search</button>
+				</form>
+				<!-- /Search -->
+						<!-- Forums List -->
+				<ul class="youplay-forum mr-10">
+					<li class="header">
+						<ul>
+							<li class="cell-icon"></li>
+							<li class="cell-info">Forum</li>
+							<li class="cell-topic-count">Topics</li>
+							<li class="cell-reply-count">Posts</li>
+							<li class="cell-freshness">Freshness</li>
+						</ul>
+					</li>
+
+					<li class="body">
+						<ul>
+							<li class="cell-icon"><i class="fa fa-folder-open-o"></i></li>
+							<li class="cell-info"><a href="#!" class="title h4">Games</a>
+								<div class="description">Games for different consoles</div>
+								<ul class="forums-list">
+									<li><a href="#!"><i class="fa fa-folder-open-o"></i>
+											Xbox</a>,</li>
+									<li><a href="#!"><i class="fa fa-folder-open-o"></i>
+											PlayStation</a>,</li>
+									<li><a href="#!"><i class="fa fa-folder-open-o"></i>
+											PC</a></li>
+								</ul></li>
+							<li class="cell-topic-count">7</li>
+							<li class="cell-reply-count">21</li>
+							<li class="cell-freshness"><a href="#!">1 year, 4 months
+									ago</a>
+								<p>
+									<a href="#!"> <img alt=""
+										src="resources/images/avatar-user-2.png" height="25"
+										width="25" />John Doe
+									</a>
+								</p></li>
+						</ul>
+
+
+
+
+
+
+
+
+
+					</li>
+
+				</ul>
+				<!-- /Forums List -->
+				
+
+			
+
+
+
+
+				<h:form enctype="multipart/form-data" id="AddSubjectForm"
+					role="form" class="youplay-form-ajax" data-toggle="validator">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="youplay-input form-group">
+
+
+								<h:inputText type="text" value="#{topicsBean.subject}"
+									a:placeholder="Subject" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="youplay-input form-group">
+								<h:inputText type="text" a:placeholder="Category"
+									value="#{topicsBean.category}" />
+							</div>
+						</div>
+
+
+
+
+					</div>
+
+
+
+
+
+
+
+
+
+
+					<div class="youplay-textarea form-group">
+						<h:inputTextarea rows="10" cols="50"
+							completeMethod="#{topicsBean.description}" queryDelay="750"
+							minQueryLength="4" a:placeholder="Description" />
+					</div>
+					<p:commandButton value="Submit" id="nonAjax"
+						actionListener="#{topicsBean.AddSubject()}" ajax="false" />
+
+
+
+				</h:form>
+
+			</div>
+		</div>
+
+		</section>
+	</ui:define>
+</ui:composition>
+

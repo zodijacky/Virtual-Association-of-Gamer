@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<!-- /Added by HTTrack -->
+<h:head>
+
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>VAG</title>
+
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<!-- Icon -->
+<link rel="icon" type="image/png" href="../resources/images/icon.png"></link>
+<!-- Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700'
+	rel='stylesheet' type='text/css'></link>
+
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/bootstrap.min.css" />
+
+<!-- FontAwesome -->
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/font-awesome.min.css" />
+<!-- youplay -->
+
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/youplay.min.css" />
+<!--[if lt IE 9]>
+      <script src="../assets/plugins/html5shiv/html5shiv.min.js"></script>
+    <![endif]-->
+
+<!-- jQuery -->
+
+ <script>
+function Call_To_Detail(id)
+{
+    $.post("{{path('ArticleDetais')}}", { id: id}).done(function(data) {
+      document.getElementById("middleDetails").innerHTML= data;
+        $("#middleDetails").css("display","block");
+       $("#middle").css("display","none");
+    });
+}
+</script>
+</h:head>
+
+<h:body>
+
+	<!-- Preloader -->
+<!-- 	<div class="page-preloader preloader-wrapp"> -->
+<!-- 		<img src="../resources/images/logo.png" alt=""></img> -->
+<!-- 		<div class="preloader"></div> -->
+<!-- 	</div> -->
+	<!-- /Preloader -->
+
+	<!-- Navbar -->
+	<nav class="navbar-youplay navbar navbar-default navbar-fixed-top ">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="off-canvas" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"> <img
+					src="../resources/images/logo.png" alt=""></img>
+				</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<li class="dropdown dropdown-hover active"><a href="#!"
+					class="dropdown-toggle" role="button" aria-expanded="false">
+						Article <span class="caret"></span> <span class="label">news</span>
+				</a></li>
+
+			</div>
+		</div>
+
+	</nav>
+
+	<!-- Banner -->
+	<div class="youplay-banner banner-top small">
+		<div class="image"
+			style="background-image: url(../resources/images/banner-blog-bg.jpg)"
+			data-top="background-position: 50% 0px;"
+			data-top-bottom="background-position: 50% -200px;"></div>
+
+		<div class="info"
+			data-top="opacity: 1; transform: translate3d(0px,0px,0px);"
+			data-top-bottom="opacity: 0; transform: translate3d(0px,150px,0px);"
+			data-anchor-target=".youplay-banner.banner-top"></div>
+	</div>
+	<!-- /Banner -->
+	<div class="container youplay-news" id="middle">
+
+		<!-- News List -->
+
+		<div class="col-md-9">
+			<ui:repeat var="Article" value="#{ArticlesBean.articles}">
+
+
+				<!-- Single News Block -->
+				<div class="news-one row">
+					<div class="col-md-4">
+						
+							<div class="img">
+								<img src="../resources/images/game-bloodborne-500x375.jpg"
+									alt=""></img>
+							</div>
+						
+					</div>
+					<div class="col-md-8">
+						<div class="clearfix">
+							<h3 class="h2 pull-left m-0">
+								<a href="blog-post-1.html">#{Article.titleArticle}</a>
+							</h3>
+							<br></br> <br></br> <span>#{Article.dateArticle}<i
+								class="fa fa-calendar"></i></span>
+						</div>
+
+						<div class="description">
+							<p>#{Article.descriptionArticle}</p>
+						</div>
+						<h:form id="article_form">
+							<h:panelGrid columns="2">
+								<h:commandLink id="like_Article"
+									actionListener="#{ArticlesBean.doLikeArticle(Article.idArticle)}"
+									value="Like" styleClass="btn read-more pull-left" />
+
+								<h:commandLink id="dislike_Article"
+									actionListener="#{ArticlesBean.doDislikeArticle(Article.idArticle)}"
+									value="Dislike" styleClass="btn read-more pull-left" />
+
+
+								<!-- 									<p:chart type="pie" model="#{chartView.pieArticles}" -->
+								<!-- 			style="width:400px;height:300px" widgetVar="chart" rendered="true"  /> -->
+
+								<!-- 								<br></br><br></br> -->
+
+<!-- 								<h:commandLink onclick="Call_To_Detail(#{Article.idArticle})" -->
+<!-- 									value="Read more" styleClass="btn read-more pull-left" -->
+<!-- 									id="detail" /> -->
+
+								<!-- <a href="#{ArticlesBean.doLikeArticle(Article.idArticle)}" class="btn read-more pull-left" id="like_Article">Like</a> -->
+							</h:panelGrid>
+						</h:form>
+
+					</div>
+				</div>
+				<!-- /Single News Block -->
+			</ui:repeat>
+
+		</div>
+
+ <div class="col-md-3">
+
+        <!-- Side Search -->
+        <div class="side-block right-side">
+          <p:chart type="pie" model="#{chartView.pieArticles}"
+			style="width:400px;height:300px" widgetVar="chart" rendered="true"  />
+          
+        </div>
+	</div>
+
+	<!-- Side Categories -->
+<!-- 	<div class="container youplay-news" id="middleDetails" -->
+<!-- 		style="display: block;"> -->
+<!-- 		<p:chart type="pie" model="#{chartView.pieArticles}" -->
+<!-- 			style="width:400px;height:300px" widgetVar="chart" rendered="true"  /> -->
+
+<!-- 	</div> -->
+	<!-- /Side Categories -->
+
+	<!-- Footer -->
+	<footer>
+		<div class="wrapper"
+			style="background-image: url(assets/images/footer-bg.jpg)"
+			data-bottom="transform:translate3d(0px,0px,0px);"
+			data-bottom-top="transform:translate3d(0px,-200px,0px);"
+			data-anchor-target="footer">
+
+			<!-- Social Buttons -->
+			<div class="social">
+				<div class="container" data-bottom-top="opacity: 0;"
+					data-bottom="opacity: 1;">
+					<h3>
+						Connect socially with <strong>VAG</strong>
+					</h3>
+
+					<div class="row icons">
+						<div class="col-xs-6 col-sm-3">
+							<a href="#!"> <i class="fa fa-facebook-square"></i> <span>Like
+									on Facebook</span>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-3">
+							<a href="#!"> <i class="fa fa-twitter-square"></i> <span>Follow
+									on Twitter</span>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-3">
+							<a href="#!"> <i class="fa fa-twitch"></i> <span>Watch
+									on Twitch</span>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-3">
+							<a href="#!"> <i class="fa fa-youtube-square"></i> <span>Watch
+									on Youtube</span>
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	<!-- /Footer -->
+	</div>
+</h:body>
+
+
+
+<!-- CSS Shapes Polyfill --> <script type="text/javascript"
+	src="../resources/js/shapes-polyfill.min.js"></script> <!-- Hexagon Progress -->
+<script type="text/javascript"
+	src="../resources/js/jquery.hexagonprogress.min.js"></script> <!-- Bootstrap -->
+<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
+
+<!-- Skrollr --> <script type="text/javascript"
+	src="../resources/js/skrollr.min.js"></script> <!-- Smooth Scroll --> <script
+	type="text/javascript" src="../resources/js/smoothscroll.js"></script>
+
+<!-- Countdown --> <script type="text/javascript"
+	src="../resources/js/jquery.countdown.min.js"></script> <!-- youplay -->
+<script type="text/javascript" src="../resources/js/youplay.min.js"></script>
+<!-- init youplay --> <script>
+    if(typeof youplay !== 'undefined') {
+        youplay.init({
+            smoothscroll: false,
+        });
+    }
+    </script> 
+    <!-- Mirrored from html.nkdev.info/youplay/dark/blog-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2015 15:28:58 GMT -->
+</html>

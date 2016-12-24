@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui" template="/YouPlayTemplate.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+
+
+<ui:define name="content">
+
+
+
+ <!-- Slider Revolution -->
+	<!--
+    Use classes:
+    rs-fullscreen
+-->
+	<div class="tp-banner-container rs-youplay rs-fullscreen">
+		<div class="tp-banner">
+			<div class="image" data-top="background-position: 50% 0px;"
+				data-top-bottom="background-position: 50% -200px;">
+
+
+
+
+				<p:graphicImage library="images"
+					name="game-dark-souls-ii-10-1680x1050.jpg" height="500"
+					width="1600">
+				</p:graphicImage>
+			</div>
+		</div>
+	</div>
+	<!-- /Slider Revolution-->
+
+
+	<!-- Main Content -->
+	<div class="relative">
+		<section class="content-wrap">
+
+		<div class="container youplay-store store-grid">
+			<!-- Games List -->
+			<div class="col-md-9 isotope">
+
+				<!-- Sort Categories -->
+				<ul class="pagination isotope-options">
+					<li data-filter="all" class="active"><span>All</span></li>
+					<li data-filter="free"><span>Free</span></li>
+					<li data-filter="popular"><span>Popular</span></li>
+					<li data-filter="specials"><span>Specials</span></li>
+					<li data-filter="upcoming"><span>Upcoming</span></li>
+					<!-- Side Search -->
+
+					<!-- /Side Search -->
+				</ul>
+				<!-- /Sort Categories -->
+
+
+				<div class="isotope-list row">
+					<!-- Single Product Block -->
+					<h:form>
+						<ui:repeat value="#{displayProductBeans.myProds}" var="product">
+
+
+
+							<div class="item col-lg-4 col-md-6 col-xs-12"
+								data-filters="popular,specials">
+								<a href="#!" class="angled-img">
+									<div class="img img-offset">
+
+										<p:graphicImage library="images" name="#{product.pro_url}">
+										</p:graphicImage>
+										<div class="badge show bg-default"></div>
+										<i class="fa icon"> <p:graphicImage library="images"
+												name="#{product.url_like}" width="24" height="24">
+											</p:graphicImage>
+
+
+										</i>
+
+
+									</div>
+
+
+
+
+									<div class="bottom-info">
+										<h3>
+											<i><p:outputLabel value="#{product.name_Prod}" /></i> <i><p:outputLabel
+													value="#{product.liked}" /></i> <i><p:outputLabel
+													value="#{product.liiked}" /></i>
+
+											<c:set var="number1" value="#{product.liiked}" />
+											<c:set var="number2" value="#{displayProductBeans.te}" />
+											<c:set var="number3" value="${10}" />
+											<c:set var="number2" value="${12}" />
+											<c:choose>
+
+												<c:when test="${number1 gt number3}">
+													<i><p:outputLabel value="aaaa" /></i>
+												</c:when>
+											</c:choose>
+										</h3>
+
+										<i><p:outputLabel
+												value="-----------------------------------------" /></i>
+
+
+										<div class="row">
+											<div class="col-xs-6">
+												<p:commandLink update="pro"
+													oncomplete="PF('proDetails').show()" title="View Details"
+													class="label label-primary" value="Zoom">
+													<f:setPropertyActionListener value="#{product}"
+														target="#{displayProductBeans.selectedProduct}"></f:setPropertyActionListener>
+												</p:commandLink>
+												&nbsp;&nbsp;
+												<p:commandLink
+													action="#{wishListBean.AddWishListe(product)}">
+													<p:graphicImage library="images" name="#{product.url_like}"
+														width="24" height="24">
+													</p:graphicImage>
+												</p:commandLink>
+
+
+												<p:commandLink action="#{cartHandlerBean.AddListe(product)}">
+													<p:graphicImage library="images" name="compare.gif"
+														width="24" height="24">
+													</p:graphicImage>
+
+													<f:setPropertyActionListener
+														target="#{cartHandlerBean.productid}"
+														value="#{product.id}"></f:setPropertyActionListener>
+													<f:setPropertyActionListener
+														target="#{cartHandlerBean.productName}"
+														value="#{product.name_Prod	}"></f:setPropertyActionListener>
+
+													<f:setPropertyActionListener
+														target="#{cartHandlerBean.price}" value="#{product.price}"
+														id="a"></f:setPropertyActionListener>
+													<f:setPropertyActionListener
+														target="#{cartHandlerBean.quantity}"
+														value="#{product.quantity}"></f:setPropertyActionListener>
+
+												</p:commandLink>
+											</div>
+											<div class="col-xs-6">
+												<div class="price">
+													Price :
+													<p:outputLabel value="#{product.price}"></p:outputLabel>
+													&nbsp;&nbsp;
+												</div>
+
+											</div>
+										</div>
+										
+										
+										
+<p:commandLink action="#{cartHandlerBean.AddToCart(product)}">Add cart here </p:commandLink>
+
+<p:commandLink action="#{displayProductBeans.AddTocart(product)}">Add cart here biatch 2 </p:commandLink>
+
+
+
+
+
+										<ul class="pager">
+											<li class="next">
+												<div class="btn-group dropup"></div> <p:commandButton
+													type="button" icon="ui-icon-cart" class="btn btn-default"
+													action="#{cartHandlerBean.AddToCart(product)}"
+													value="Add to card ">
+
+
+
+
+
+
+
+
+													<f:setPropertyActionListener
+														target="#{cartHandlerBean.productid}"
+														value="#{product.id}"></f:setPropertyActionListener>
+													<f:setPropertyActionListener
+														target="#{cartHandlerBean.productName}"
+														value="#{product.name_Prod	}"></f:setPropertyActionListener>
+													<f:setPropertyActionListener
+														target="#{cartHandlerBean.price}" value="#{product.price}"></f:setPropertyActionListener>
+													<f:setPropertyActionListener
+														target="#{cartHandlerBean.quantity}"
+														value="#{product.quantity}"></f:setPropertyActionListener>
+
+
+												</p:commandButton>
+											</li>
+										</ul>
+									</div>
+								</a>
+							</div>
+
+							<!-- /Single Product Block -->
+
+							<p:dialog header="Product info" widgetVar="proDetails"
+								modal="true">
+								<p:outputPanel id="pro">
+									<p:panelGrid columns="2">
+										<f:facet name="header">
+											<h:graphicImage
+												name="#{displayProductBeans.selectedProduct.pro_url}"
+												library="images" width="200" height="200" />
+
+										</f:facet>
+										<h:outputText value="Quantity" /> :<h:outputText
+											value="#{displayProductBeans.selectedProduct.quantity}" />
+
+
+
+
+
+									</p:panelGrid>
+								</p:outputPanel>
+							</p:dialog>
+						</ui:repeat>
+					</h:form>
+					<!-- Single Product Block -->
+
+					<!-- /Single Product Block -->
+					<!-- Single Product Block -->
+
+					<!-- /Single Product Block -->
+
+
+				</div>
+
+				<!-- Single Product Block -->
+
+			</div>
+		</div>
+		<!-- /Games List --> <!-- Right Side -->
+		<div class="col-md-3">
+
+			<!-- Side Search -->
+
+
+			<div class="side-block right-side">
+				<p>Search by Games:</p>
+				<form action="http://html.nkdev.info/youplay/dark/search.html">
+					<div class="youplay-input">
+						<input type="text" name="search" placeholder=" search"></input>
+					</div>
+				</form>
+			</div>
+
+			<!-- /Side Search -->
+			<!-- Side Categories -->
+			<div class="side-block right-side">
+				<h4 class="block-title">Categories</h4>
+				<ul class="block-content">
+					<li><a href="#!">All</a></li>
+					<li><a href="#!">Action</a></li>
+					<li><a href="#!">Adventure</a></li>
+					<li><a href="#!">Casual</a></li>
+					<li><a href="#!">Indie</a></li>
+					<li><a href="#!">Racing</a></li>
+					<li><a href="#!">RPG</a></li>
+					<li><a href="#!">Simulation</a></li>
+					<li><a href="#!">Strategy</a></li>
+				</ul>
+			</div>
+			<!-- /Side Categories -->
+
+		</div>
+
+
+
+
+
+
+
+		</section>
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ui:define>
+</ui:composition>

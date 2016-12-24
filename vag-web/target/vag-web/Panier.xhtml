@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui" template="/YouPlayTemplate.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+<ui:define name="menu">
+	<li><a href="">Cart<span
+									class="badge pull-right bg-default"><p:outputLabel value="#{displayProductBeans.sizeCart}" /></span></a></li>
+							<li class="divider"></li>
+							
+							
+							<li><a href="">WishList<span
+									class="badge pull-right bg-warning"><p:outputLabel value="#{wishListBean.wishTaille}" /></span></a></li>
+							<li class="divider"></li>
+
+</ui:define>
+	<ui:define name="content">
+
+		<!-- Main Content -->
+		<section class="content-wrap"> <!-- Banner -->
+		<div class="youplay-banner banner-top xsmall">
+			<div class="image" data-top="background-position: 50% 0px;"
+				data-top-bottom="background-position: 50% -200px;">
+
+
+
+
+				<p:graphicImage library="images" name="banner-bg.jpg" height="400"
+					width="1400">
+				</p:graphicImage>
+			</div>
+
+			<div class="info"
+				data-top="opacity: 1; transform: translate3d(0px,0px,0px);"
+				data-top-bottom="opacity: 0; transform: translate3d(0px,150px,0px);"
+				data-anchor-target=".youplay-banner.banner-top">
+				<div>
+					<div class="container">
+						<h2>Cart</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Banner -->
+
+		<div class="container youplay-content">
+
+			<div class="col-md-9">
+				<h2 class="mt-0">Your Games in Cart</h2>
+				<!-- Single Product Block -->
+				<form  action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+				
+				<input type="hidden" name="upload" value="1" />
+<input type="hidden" name="return" value="${intiParam['returnurl']}" />
+<input type="hidden" name="cmd" value="_cart" />
+<input type="hidden" name="business" value="${intiParam['business']}" />
+<c:set var="dem" value="1" />
+			
+				  <c:forEach items="#{displayProductBeans.myProdB}" var="product">
+<!-- product -->
+<input type="hidden" name="item_name_#{dem}" value="#{product.nameProd}" />
+<input type="hidden" name="item_number_#{dem}" value="#{product.idProd}" />
+<input type="hidden" name="amount_#{dem}" value="#{product.price}" />
+<input type="hidden" name="quantity_#{dem}" value="1" />
+	<c:set var="dem" value="#{dem+1}" />
+<!-- product -->
+				<div class="item angled-bg">
+					<div class="row">
+						<div class="col-lg-2 col-md-3 col-xs-4">
+							<div class="angled-img">
+								<div class="img">
+
+									<p:graphicImage library="images" name="#{product.pro_url}"></p:graphicImage>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-10 col-md-9 col-xs-8">
+							<div class="row">
+								<div class="col-xs-6 col-md-9">
+									<h4><i><b>
+									
+									<h:outputText value="#{product.nameProd}" />
+								
+									</b></i></h4>
+   <div class="rating hidden-xs"> <h:outputText value="#{product.category}" /></div>
+								</div>
+								<div class="col-xs-6 col-md-3 align-right">
+									<div class="price">Price:  $<h:outputText value="#{product.price}" /></div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+				
+				<input type="hidden" name="business" value="JsfVendor@gmail.com"/>
+<input type="hidden" name="return" value="http://localhost:18080/shop-web/pages/User/SingleTopic.jsf"/>
+<input type="hidden" name="cancel" value="http://localhost:18080/shop-web/index.jsf"/>
+
+<input type="image" src="https://www.paypal.com/fr_XC/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"/>
+
+				
+				</form>
+				<!-- /Single Product Block -->
+				<div class="align-right h3 mr-20 mb-20">
+					Total: <strong>$<h:outputText value="#{displayProductBeans.totalCart}" /></strong>
+				</div>
+				<div class="align-right">
+					
+				
+				</div>
+			</div>
+			
+			
+   <!-- Right Side -->
+      <div class="col-md-3">
+
+        <!-- Side Search -->
+        <div class="side-block right-side">
+          <p>Search by Games:</p>
+          <form action="http://html.nkdev.info/youplay/dark/search.html">
+            <div class="youplay-input">
+              <input type="text" name="search" placeholder="enter search term"/>
+            </div>
+          </form>
+        </div>
+        <!-- /Side Search -->
+
+        <!-- Side Categories -->
+        <div class="side-block right-side">
+          <h4 class="block-title">Categories</h4>
+          <ul class="block-content">
+            <li><a href="#!">All</a>
+            </li>
+            <li><a href="#!">Action</a>
+            </li>
+            <li><a href="#!">Adventure</a>
+            </li>
+            <li><a href="#!">Casual</a>
+            </li>
+            <li><a href="#!">Indie</a>
+            </li>
+            <li><a href="#!">Racing</a>
+            </li>
+            <li><a href="#!">RPG</a>
+            </li>
+            <li><a href="#!">Simulation</a>
+            </li>
+            <li><a href="#!">Strategy</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /Side Categories -->
+
+        <!-- Side Popular News -->
+        <div class="side-block right-side">
+          <h4 class="block-title">Popular Games</h4>
+          <div class="block-content p-0">
+            <!-- Single News Block -->
+            <div class="row youplay-side-news">
+              <div class="col-xs-3 col-md-4">
+                <a href="store-product-1.html" class="angled-img">
+                  <div class="img">
+                    <img src="assets/images/game-bloodborne-500x375.jpg" alt=""/>
+                  </div>
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-8">
+                <h4 class="ellipsis"><a href="store-product-1.html" title="Bloodborne">Bloodborne</a></h4>
+                <span class="price">$50.00</span>
+              </div>
+            </div>
+            <!-- /Single News Block -->
+
+            <!-- Single News Block -->
+            <div class="row youplay-side-news">
+              <div class="col-xs-3 col-md-4">
+                <a href="#!" class="angled-img">
+                  <div class="img">
+                    <img src="assets/images/game-dark-souls-ii-500x375.jpg" alt=""/>
+                  </div>
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-8">
+                <h4 class="ellipsis"><a href="#!" title="Dark Souls II">Dark Souls II</a></h4>
+                <span class="price">$39.99 <sup><del>$49.99</del></sup></span>
+              </div>
+            </div>
+            <!-- /Single News Block -->
+
+            <!-- Single News Block -->
+            <div class="row youplay-side-news">
+              <div class="col-xs-3 col-md-4">
+                <a href="#!" class="angled-img">
+                  <div class="img">
+                    <img src="assets/images/game-kingdoms-of-amalur-reckoning-500x375.jpg" alt=""/>
+                  </div>
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-8">
+                <h4 class="ellipsis"><a href="#!" title="Kingdoms of Amalur">Kingdoms of Amalur</a></h4>
+                <span class="price">$20.00</span>
+              </div>
+            </div>
+            <!-- /Single News Block -->
+
+            <!-- Single News Block -->
+            <div class="row youplay-side-news">
+              <div class="col-xs-3 col-md-4">
+                <a href="#!" class="angled-img">
+                  <div class="img">
+                    <img src="assets/images/game-diablo-iii-500x375.jpg" alt=""></img>
+                  </div>
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-8">
+                <h4 class="ellipsis"><a href="#!" title="Let's Grind Diablo III">Diablo III</a></h4>
+                <span class="price">$10.00</span>
+              </div>
+            </div>
+            <!-- /Single News Block -->
+          </div>
+        </div>
+        <!-- /Side Popular News -->
+      </div>
+      <!-- /Right Side -->
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		</section>
+
+
+
+
+
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>

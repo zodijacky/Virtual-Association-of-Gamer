@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Articles</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="msgs" showDetail="true" />
+
+		<h:panelGrid columns="2" cellpadding="4">
+			<p:outputLabel value="Article title" />
+			<p:autoComplete value="#{ArticlesBean.article.titleArticle}" />
+
+			<p:outputLabel value="Article description" />
+			<p:autoComplete value="#{ArticlesBean.article.descriptionArticle}" />
+
+			<p:outputLabel value="Article date" />
+			<p:calendar styleClass="form-control input-lg" id="dateArticle"
+				value="#{ArticlesBean.article.dateArticle}" />
+
+			<p:commandButton value="Submit" icon="ui-icon-check"
+				action="#{ArticlesBean.doAddArticle()}" />
+				
+		<p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true"/>
+ 
+    <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" disabled="true" />
+	
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>

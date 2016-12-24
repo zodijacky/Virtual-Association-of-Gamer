@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="vag-ejb">
+		<jta-data-source>java:/vaDS</jta-data-source>
+		<class>entities.Article</class>
+		<class>entities.Cart</class>
+		<class>entities.Forum</class>
+		<class>entities.Product</class>
+		<class>entities.User</class>
+		<class>entities.WishList</class>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+		</properties>
+	</persistence-unit>
+</persistence>

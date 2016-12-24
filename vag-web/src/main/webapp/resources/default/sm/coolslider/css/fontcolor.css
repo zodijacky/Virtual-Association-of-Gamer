@@ -1,0 +1,58 @@
+.sm-coolslider .side-info .item-title {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.sm-coolslider .side-info .item-title a {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.sm-coolslider .side-info .item-price {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Georgia;
+    padding: 8px 20px 0;
+}
+
+.sm-coolslider .side-info .item-price .sale-price {
+    color: #F30000;
+}
+
+.sm-coolslider .side-info .item-price .sale-price-before {
+    color: #F30000;
+    text-decoration: line-through;
+}
+
+.sm-coolslider .side-info .item-description {
+    color: #FFFFFF;
+}
+
+.sm-coolslider .side-info .item-detail {
+    text-align: left;
+}
+
+.sm-coolslider .side-info .item-detail a {
+    color: #FFFFFF;
+}
+
+.sm-coolslider .pag-list.type-num .pag-item {
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #AAAAAA;
+}
+
+.sm-coolslider .pag-list.type-num .pag-item.sel {
+    color: #FFFFFF;
+}
+
+.sm-coolslider .pag-list.type-dot .pag-item {
+    text-indent: -999px;
+}
+

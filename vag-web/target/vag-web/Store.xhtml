@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+
+
+
+
+
+
+<h:head>
+
+
+	<title>youplay</title>
+
+
+	<!-- Icon -->
+	<link rel="icon" type="image/png" href="images/icon.png"></link>
+	<!-- Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700'
+		rel='stylesheet' type='text/css'></link>
+
+
+	<!-- Bootstrap -->
+
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<!-- FontAwesome -->
+
+
+	<h:outputStylesheet library="css" name="font-awesome.min.css" />
+	<!-- youplay -->
+
+
+	<h:outputStylesheet library="css" name="youplay.min.css" />
+
+
+
+</h:head>
+<body>
+	<!-- Navbar -->
+	<nav class="navbar-youplay navbar navbar-default navbar-fixed-top ">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="off-canvas" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html"> <h:graphicImage
+					library="images" name="logo2.png" />
+			</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="dropdown dropdown-hover "><a href="#!"
+					class="dropdown-toggle" role="button" aria-expanded="false">
+						Home <span class="caret"></span> <span class="label">HomePage</span>
+				</a></li>
+				<li class="dropdown dropdown-hover "><a href="#!"
+					class="dropdown-toggle" role="button" aria-expanded="false">
+						Articles <span class="caret"></span> <span class="label">news</span>
+				</a>
+					<div class="dropdown-menu" style="width: 320px;">
+						<ul role="menu">
+							<li><a href="blog-1.html">Favourite Articles</a></li>
+							<li><a href="blog-2.html">New Articles</a></li>
+
+						</ul>
+						<!--
+                        -->
+
+					</div></li>
+				<li class="dropdown dropdown-hover "><a href="#!"
+					class="dropdown-toggle" role="button" aria-expanded="false">
+						Event <span class="caret"></span> <span class="label">full
+							list</span>
+				</a>
+					<div class="dropdown-menu" style="width: 320px;">
+						<ul role="menu">
+							<li><a href="components.html">List of Event</a></li>
+							<li><a href="user-profile.html">My Events</a></li>
+							<li><a href="forums.html">Gallery</a></li>
+
+
+						</ul>
+						<!--
+                        -->
+
+					</div></li>
+
+				<li class="dropdown dropdown-hover "><a href="#!"
+					class="dropdown-toggle" role="button" aria-expanded="false">
+						Contact Us <span class="caret"></span> <span class="label">reach
+							us</span>
+				</a></li>
+
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown dropdown-hover "><a href="#!"
+					class="dropdown-toggle" role="button" aria-expanded="false">
+						Omar Mansour <span class="badge bg-default">2</span> <span
+						class="caret"></span> <span class="label">it is you</span>
+				</a>
+					<div class="dropdown-menu">
+						<ul role="menu">
+							<li><a href="http://html.nkdev.info/youplay/documentation">Profile</a>
+							</li>
+
+							<li class="divider"></li>
+
+
+							<li><a href="cart.html">My Events <span
+									class="badge pull-right bg-default">3</span></a></li>
+							<li class="divider"></li>
+
+							<li><a href="login.html">Log Out</a></li>
+
+						</ul>
+					</div></li>
+				<li></li>
+
+			</ul>
+		</div>
+	</div>
+	</nav>
+	<!-- /Navbar -->
+	<p:panel class="content-wrap"> <!-- Banner -->
+	<div class="youplay-banner banner-top">
+		<div class="image"
+			style="background-image: url(assets/images/game-bloodborne-1920x1151.jpg)"
+			data-top="background-position: 50% 0px;"
+			data-top-bottom="background-position: 50% -200px;">
+			<p:graphicImage library="images" name="game-bloodborne-1920x1151.jpg">
+			</p:graphicImage>
+		</div>
+
+		<div class="info"
+			data-top="opacity: 1; transform: translate3d(0px,0px,0px);"
+			data-top-bottom="opacity: 0; transform: translate3d(0px,150px,0px);"
+			data-anchor-target=".youplay-banner.banner-top">
+			<div>
+				<div class="container">
+					<h2>Store</h2>
+					<br />
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Banner -->
+
+	<div class="container youplay-store store-grid">
+
+		<!-- Games List -->
+		<div class="col-md-9 isotope">
+			<!-- Sort Categories -->
+			<ul class="pagination isotope-options">
+				<li data-filter="all" class="active"><span>All</span></li>
+				<li data-filter="free"><span>Free</span></li>
+				<li data-filter="popular"><span>Popular</span></li>
+				<li data-filter="specials"><span>Specials</span></li>
+				<li data-filter="upcoming"><span>Upcoming</span></li>
+			</ul>
+			<!-- /Sort Categories -->
+		</div>
+
+
+		<div class="isotope-list row">
+
+			<!-- Single Product Block -->
+			<div class="item col-lg-4 col-md-6 col-xs-12" data-filters="popular">
+				<a href="#!" class="angled-img">
+					<div class="img img-offset">
+
+						<p:graphicImage library="images"
+							name="game-bloodborne-500x375.jpg" alt="">
+						</p:graphicImage>
+					</div>
+					<div class="bottom-info">
+						<h4>Bloodborne</h4>
+						<div class="row">
+
+							<div class="col-xs-6">
+								<div class="price">$50.00</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<!-- /Single Product Block -->
+
+
+
+			<!-- Single Product Block -->
+			<div class="item col-lg-4 col-md-6 col-xs-12" data-filters="popular">
+				<a href="#!" class="angled-img">
+					<div class="img img-offset">
+
+						<p:graphicImage library="images"
+							name="game-dark-souls-ii-500x375.jpg" alt="">
+						</p:graphicImage>
+						<div class="badge show bg-default">-20%</div>
+					</div>
+					<div class="bottom-info">
+						<h4>Bloodborne</h4>
+						<div class="row">
+
+							<div class="col-xs-6">
+								<div class="price">
+									Price : $39.99 <sup><del>$49.99</del></sup>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<!-- /Single Product Block -->
+
+
+			<!-- Single Product Block -->
+			<div class="item col-lg-4 col-md-6 col-xs-12" data-filters="popular">
+				<a href="#!" class="angled-img">
+					<div class="img img-offset">
+
+						<p:graphicImage library="images"
+							name="game-kingdoms-of-amalur-reckoning-500x375.jpg" alt="">
+						</p:graphicImage>
+						<div class="badge show bg-default">-20%</div>
+					</div>
+					<div class="bottom-info">
+						<h4>Reckoning Of Amalur</h4>
+						<div class="row">
+
+							<div class="col-xs-6">
+								<div class="price">
+									Price : $39.99 <sup><del>$49.99</del></sup>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<!-- /Single Product Block -->
+		</div>
+    <!-- Right Side -->
+        <div class="col-md-3">
+         <!-- Side Search -->
+        <div class="side-block right-side">
+          <p>Search by Games:</p>
+          <form action="http://html.nkdev.info/youplay/dark/search.html">
+            <div class="youplay-input">
+              <input type="text" name="search" placeholder="enter search term"/>
+            </div>
+          </form>
+        </div>
+        <!-- /Side Search -->
+        
+        
+        </div>
+	</div>
+      <!-- Right Side -->
+  <!-- Right Side -->
+      <div class="col-md-3">
+      <div class="side-block right-side">
+          <p>Search by Games:</p>
+          <form action="http://html.nkdev.info/youplay/dark/search.html">
+            <div class="youplay-input">
+             aa
+            </div>
+          </form>
+        </div>
+        </div>
+	</p:panel>
+	<!-- /aaaa -->
+
+
+	<!-- /aaaaaaaaaaaaaaaaaar -->
+
+
+</body>
+</html>

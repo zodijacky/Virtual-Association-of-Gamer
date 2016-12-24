@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui" template="/YouPlayTemplate.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+<ui:define name="menu">
+	<li><a href="http://localhost:18080/vag-web/Panier">Cart<span
+									class="badge pull-right bg-default"><p:outputLabel value="#{displayProductBeans.sizeCart}" /></span></a></li>
+							<li class="divider"></li>
+							
+							
+							<li><a href="http://localhost:18080/vag-web/wishList">WishList<span
+									class="badge pull-right bg-warning"><p:outputLabel value="#{wishListBean.wishTaille}" /></span></a></li>
+							<li class="divider"></li>
+
+</ui:define>
+
+
+	<ui:define name="content">
+
+		<!-- Main Content -->
+		<section class="content-wrap"> <!-- Banner -->
+
+
+
+
+
+
+		<div class="youplay-banner banner-top xsmall">
+			<div class="image" data-top="background-position: 50% 0px;"
+				data-top-bottom="background-position: 50% -200px;">
+
+
+
+
+				<p:graphicImage library="images" name="banner-bg.jpg" height="400"
+					width="1400">
+				</p:graphicImage>
+			</div>
+
+			<div class="info"
+				data-top="opacity: 1; transform: translate3d(0px,0px,0px);"
+				data-top-bottom="opacity: 0; transform: translate3d(0px,150px,0px);"
+				data-anchor-target=".youplay-banner.banner-top">
+				<div>
+					<div class="container">
+						<h2>Cart</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Banner -->
+
+
+
+
+		<div class="container youplay-content">
+
+			<div class="col-md-9">
+				<h2 class="mt-0">Mail</h2>
+
+
+				<!-- Single Product Block -->
+
+
+
+
+				<h:form enctype="multipart/form-data" id="AddSubjectForm"
+					role="form" class="youplay-form-ajax" data-toggle="validator">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="youplay-input form-group">
+
+
+								<h:inputText type="text" value="#{mailBean.to}" a:placeholder="to" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="youplay-input form-group">
+								<h:inputText type="text" a:placeholder="Subject"
+									value="#{mailBean.subject}" />
+							</div>
+						</div>
+
+						
+
+
+					</div>
+
+
+
+
+
+
+
+
+
+
+					<div class="youplay-textarea form-group">
+						<h:inputTextarea rows="10" cols="50"
+							completeMethod="#{mailBean.content}" queryDelay="750"
+							minQueryLength="4" a:placeholder="Content" />
+					</div>
+					<p:commandButton value="Submit" id="nonAjax"
+						actionListener="#{mailBean.SendMail()}" ajax="false" />
+
+					
+					
+				</h:form>
+
+			</div>
+		</div>
+
+		</section>
+	</ui:define>
+</ui:composition>
+
